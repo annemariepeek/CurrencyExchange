@@ -11,6 +11,7 @@ require("dotenv").config({ path: path.resolve(__dirname, 'credentialsDontPost/.e
 app.set("views", path.resolve(__dirname, "templates"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(__dirname + '/css'));
 
 const portNumber = 5001;
 const userName = process.env.MONGO_DB_USERNAME;
@@ -41,9 +42,11 @@ app.post("/exchange", (request, response1) => {
     const { from_curr, to_curr , amount} = request.body;
 
 
-    fetch(`https://currency-exchange.p.rapidapi.com/exchange?from=${from_curr}&to=${to_curr}&q=1.0`, options)
+    fetch(`https://currency-exchange.p.rapidapi.com/exchange?from=${from_curr}&to=${to_curr}`, options)
         .then(response => response.json())
         .then(response => {
+
+            console.log(response)
             const convertion = amount * response
 
             const total_convertion = {
@@ -67,10 +70,13 @@ app.post("/exchange", (request, response1) => {
                 }
             }
             addConvertionToDB().catch(console.error);
+
+            total_convertion.portNumber = portNumber;
             
-            response1.render("exchange", variables);
-        }).catch(err => console.error(err));
-});
+            response1.render("exchange", total_convertion);
+        })
+        .catch(err => console.error(err));
+    });
 
 async function addConvertion(client, databaseAndCollection, newConvertion) {
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newConvertion);

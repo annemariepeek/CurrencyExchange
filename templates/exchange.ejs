@@ -5,32 +5,40 @@
 <head>
 	<meta charset="utf-8">
 	<title>Currency Exchange</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
-	<h1>Currency Exchange Convertor</h1>
+    <div class="center">
+        <h1>Currency Exchange Convertor</h1>
 
-    <form id="user_form"> 
-        Amount: <%- amount %>
+        <form id="user_form" action="http://localhost:<%- portNumber %>/" method="get"> 
+            <div class="container">
+                <div class="input">
+                    <label for="amount">Amount</label> <br><br>  
+                    <%- amount %>
+                </div>
+                <div class="input">
+                    <label for="from_curr">Currency From</label> <br><br>  
+                    <%- from_curr %>
+                </div>
+                <div class="input">
+                    <label for="to_curr">Currency To</label> <br><br>  
+                    <%- to_curr %>
+                </div>
+              </div>
+              <br><br>
 
-        Currency From: <%- from_curr %>
-
-        Currency to: <%- to_curr %>
-
-        1 <%- from_curr %> is <%- to_curr %> <%- exchange_rate %>
-
-        <strong>Convertion: </strong> <%- amount %> <%- from_curr %> = <%- convertion %> <%- to_curr %>
-
-
-        <!-- <select id="preference">
-			<option value="JavaScript">JavaScript</option>
-			<option value="Ruby" selected="selected">Ruby</option>
-			<option value="Python">Python</option>
-		</select> -->
-    
-
-    </form>
-
+            
+            <div class="convertion">
+                <strong>Convertion: <br><br> </strong> <%- amount %> <%- from_curr %> = <%- convertion %> <%- to_curr %>
+            </div>
+            <br><br>
+            1 <%- from_curr %> = <%- exchange_rate %> <%- to_curr %><br><br><br>
+            <br>
+            <input type="submit" class="button" value="Home Page">
+        </form>
+    </div>
+	
 </body>
-
 </html>
