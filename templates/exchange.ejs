@@ -10,15 +10,16 @@
 <body>
 	<h1>Currency Exchange Convertor</h1>
 
-    <form id="user_form" action="http://localhost:<%- portNumber %>/exchange" method="post"> 
-        Amount: <input type="number" step="0.01" name="amount">
+    <form id="user_form"> 
+        Amount: <%- amount %>
 
-        Currency From: <input type="text" name="from_curr">
+        Currency From: <%- from_curr %>
 
-        Currency to: <input type="text" name="to_curr">
+        Currency to: <%- to_curr %>
 
-        <input type="reset">
-		<input type="submit" value="Calculate convertion">
+        1 <%- from_curr %> is <%- to_curr %> <%- exchange_rate %>
+
+        <strong>Convertion: </strong> <%- amount %> <%- from_curr %> = <%- convertion %> <%- to_curr %>
 
 
         <!-- <select id="preference">
