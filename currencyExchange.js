@@ -55,14 +55,14 @@ app.post("/conversion", (request, response1) => {
         .then(response => response.json())
         .then(response => {
 
-            const convertion = amount * response
+            const conversion = amount * response
 
             const total_convertion = {
                 amount: amount,
                 from_curr: from_curr,
                 to_curr: to_curr,
                 exchange_rate: response,
-                convertion: convertion,
+                conversion: conversion,
                 portNumber: portNumber
             }
 
@@ -97,14 +97,14 @@ app.post("/retrieveRate", (request, response) => {
                     
                     console.log(exchange_rate)
 
-                    const convertion = {
+                    const conversion = {
                         from_curr: from_curr,
                         to_curr: to_curr,
                         exchange_rate: exchange_rate,
                         portNumber: portNumber
                     }
 
-                    response.render("retrieveRate", convertion)
+                    response.render("retrieveRate", conversion)
                     
         } catch (e) {
             console.error(e);
