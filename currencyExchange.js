@@ -47,7 +47,7 @@ app.get("/retrieve", (request, response) => {
 });
 
 
-app.post("/convertion", (request, response1) => {
+app.post("/conversion", (request, response1) => {
     const { from_curr, to_curr , amount} = request.body;
 
 
