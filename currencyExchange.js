@@ -31,14 +31,23 @@ const options = {
     }
 };
 
-
 app.get("/", (request, response) => {
     let variables = { portNumber: portNumber}
     response.render("index", variables)
 });
 
+app.get("/exchange", (request, response) => {
+    let variables = { portNumber: portNumber}
+    response.render("exchange", variables)
+});
 
-app.post("/exchange", (request, response1) => {
+app.get("/retrieve", (request, response) => {
+    let variables = { portNumber: portNumber}
+    response.render("retrieve", variables)
+});
+
+
+app.post("/convertion", (request, response1) => {
     const { from_curr, to_curr , amount} = request.body;
 
 
@@ -46,7 +55,6 @@ app.post("/exchange", (request, response1) => {
         .then(response => response.json())
         .then(response => {
 
-            console.log(response)
             const convertion = amount * response
 
             const total_convertion = {
@@ -54,7 +62,8 @@ app.post("/exchange", (request, response1) => {
                 from_curr: from_curr,
                 to_curr: to_curr,
                 exchange_rate: response,
-                convertion: convertion
+                convertion: convertion,
+                portNumber: portNumber
             }
 
             async function addConvertionToDB() {
@@ -71,15 +80,52 @@ app.post("/exchange", (request, response1) => {
             }
             addConvertionToDB().catch(console.error);
 
-            total_convertion.portNumber = portNumber;
             
-            response1.render("exchange", total_convertion);
+            response1.render("convertion", total_convertion);
         })
         .catch(err => console.error(err));
-    });
+});
+
+
+app.post("/retrieveRate", (request, response) => {
+    
+    async function lookUpConvertionRate() {
+        try {
+            await client.connect();
+                    const { from_curr, to_curr } = request.body;
+                    const {exchange_rate}= await lookUpConvertionRateInDB(client, databaseAndCollection, from_curr, to_curr);
+                    
+                    console.log(exchange_rate)
+
+                    const convertion = {
+                        from_curr: from_curr,
+                        to_curr: to_curr,
+                        exchange_rate: exchange_rate,
+                        portNumber: portNumber
+                    }
+
+                    response.render("retrieveRate", convertion)
+                    
+        } catch (e) {
+            console.error(e);
+        } finally {
+            await client.close();
+        }
+    }
+    lookUpConvertionRate().catch(console.error);
+});
+
 
 async function addConvertion(client, databaseAndCollection, newConvertion) {
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newConvertion);
+}
+
+async function lookUpConvertionRateInDB(client, databaseAndCollection, from_curr, to_curr) {
+    let filter = {from_curr : from_curr, to_curr: to_curr};
+    const result = client.db(databaseAndCollection.db)
+                    .collection(databaseAndCollection.collection)
+                    .findOne(filter);
+    return result;
 }
 
 app.listen(portNumber); 

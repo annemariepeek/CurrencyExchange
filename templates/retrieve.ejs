@@ -10,15 +10,11 @@
 
 <body>
     <div class="center">
-        <h1>Currency Exchange Convertor</h1>
+        <h1>Retrieve Currency Exchange</h1>
         <br>
-        <form id="user_form" action="http://localhost:<%- portNumber %>/convertion" method="post"> 
+        <form id="user_form" action="http://localhost:<%- portNumber %>/retrieveRate" method="post"> 
             
             <div class="container">
-                <div class="input">
-                    <label for="amount">Amount</label> <br><br>  
-                    <input type="text" inputmode="decimal" autocomplete="off" value="1.00" name="amount">
-                </div>
                 <div class="input">
                     <label for="from_curr">Currency From</label> <br><br>  
                     <input type="text" name="from_curr" placeholder="USD">
@@ -30,7 +26,7 @@
             </div>
             <br><br><br>
             <input type="reset" class="button">
-            <input type="submit" value="Calculate convertion" class="button">
+            <input type="submit" value="Retrieve convertion rate" class="button">
         </form>
 
     </div>

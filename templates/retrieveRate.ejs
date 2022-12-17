@@ -1,0 +1,38 @@
+<!-- DO NOT MODIFY THIS FILE -->
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Currency Exchange</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div class="center">
+        <h1>Currency Exchange Convertor</h1>
+
+        <form id="user_form" action="http://localhost:<%- portNumber %>/" method="get"> 
+            <div class="container">
+                <div class="input">
+                    <label for="from_curr">Currency From</label> <br><br>  
+                    <%- from_curr %>
+                </div>
+                <div class="input">
+                    <label for="to_curr">Currency To</label> <br><br>  
+                    <%- to_curr %>
+                </div>
+              </div>
+              <br><br>
+
+            
+            <div class="convertion">
+                <strong>Convertion Rate: <br><br> </strong> <%- exchange_rate %> 
+            </div>
+            <br>
+            <input type="submit" class="button" value="Home Page">
+        </form>
+    </div>
+	
+</body>
+</html>
