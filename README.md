@@ -1,10 +1,7 @@
 # CurrencyExchange
-Final project CMSC335 
+Deployed appication: 
 https://kind-plum-gosling-cape.cyclic.app
 
-
-## Team Members 
-Annemarie Peek (apeek)
 
 ## App Description 
 Currency exchange converter that will take the original currency, the currency that the user would like to exchange to and the amount. The applicaiton will display the exchange rate and display the calculated conversion.

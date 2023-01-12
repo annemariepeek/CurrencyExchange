@@ -11,7 +11,7 @@ require("dotenv").config({ path: path.resolve(__dirname, 'credentialsDontPost/.e
 app.set("views", path.resolve(__dirname, "templates"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname + '/css/'));
 
 const portNumber = 5001;
 const userName = process.env.MONGO_DB_USERNAME;

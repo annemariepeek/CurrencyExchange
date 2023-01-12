@@ -1,6 +1,9 @@
 body {
-    
-    background-color: #B0C4DE;
+  background-color: lightgrey;
+	/* background-image: url(../images/country_flags.png);
+	background-repeat: repeat-x; 
+	background-attachment: fixed; 
+	background-position: center; */
 
 }
 
@@ -16,7 +19,7 @@ h1 {
 h1:after
 {
     content:'';
-    display:block;
+    display:block; 
     border: 1.5px solid  #3E6495;
 
 }
@@ -25,7 +28,7 @@ h1:after
     display: inline-block;
     width: 200px;
     height: 60px;
-    /* background-color: lightgray; */
+   
     padding:10px;
     border-radius:10px;
     font-size: larger;
@@ -36,7 +39,7 @@ h1:after
 }
 
 .center {
-    background-color: #89A6CD;
+    background-color: lightgray;
     border-radius: 25px;;
     box-shadow: rgb(137 166 205 / 100%) 0 10px 24px;
     text-align: center;
@@ -50,7 +53,7 @@ h1:after
 
 input[type="text"], input[type="number"]:focus{
 
-    background-color: #B0C4DE;
+    background-color: lightgrey;
     padding:10px;
     border-radius:10px;
 
@@ -104,4 +107,4 @@ input[type="text"], input[type="number"]:focus{
 .button-28:active {
   box-shadow: none;
   transform: translateY(0);
-}
+} 
