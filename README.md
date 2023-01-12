@@ -1,6 +1,6 @@
 # CurrencyExchange
 Deployed appication URL: 
-https://kind-plum-gosling-cape.cyclic.app
+https://currency-exchange.cyclic.app
 
 
 ## App Description 
@@ -12,6 +12,7 @@ https://rapidapi.com/fyhao/api/currency-exchange/
 
 ## YouTube Demo Video 
 https://youtu.be/IhiRvOrghn8
+
 
 
 
