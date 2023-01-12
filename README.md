@@ -1,5 +1,5 @@
 # CurrencyExchange
-Deployed appication: 
+Deployed appication URL: 
 https://kind-plum-gosling-cape.cyclic.app
 
 
